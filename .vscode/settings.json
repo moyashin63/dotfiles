@@ -1,0 +1,24 @@
+{
+    "editor.fontSize": 16,
+    "window.zoomLevel": -1,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "PlemolJP Medium, Monaco, 'Courier New', monospace",
+    "workbench.colorTheme": "Solarized Dark",
+
+
+    "files.trimFinalNewlines": true,
+    
+    "omnisharp.useModernNet": false,
+    "workbench.list.openMode": "doubleClick",
+    // "editor.acceptSuggestionOnEnter": "off", // Not autocomplete when pressed Enter.
+    "omnisharp.useGlobalMono": "always",
+    "omnisharp.monoPath": "/Library/Frameworks/Mono.framework/Versions/Current",
+
+    "diffEditor.codeLens": true,
+    "csharp.referencesCodeLens.enabled": false,
+
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false, 
+
+}
