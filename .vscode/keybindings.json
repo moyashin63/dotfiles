@@ -1,5 +1,26 @@
 [
-    // ------------------------------ Tmux editor ------------------------------
+    // ------------------------------ Basic ------------------------------
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    
+    // ------------------------------ Editor ------------------------------
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor",
+        "when": "!terminalFocus && !sideBarFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor",
+        "when": "!terminalFocus && !sideBarFocus && vim.mode != 'Insert'"
+    },
     {
         "key": "ctrl+q h",
         "command": "workbench.action.focusLeftGroup",
@@ -20,24 +41,28 @@
         "command": "workbench.action.focusAboveGroup",
         "when": "editorFocus"
     },
+    // Split
     {
-        "key": "ctrl+q shift+\\",
+        "key": "ctrl+s v",
+        "command": "workbench.action.splitEditor",
+        "when": "editorFocus"
+    }, 
+    {
+        "key": "ctrl+s ctrl+v",
         "command": "workbench.action.splitEditor",
         "when": "editorFocus"
     },
     {
-        "key": "cmd+\\",
-        "command": "-workbench.action.splitEditor"
-    }, // Split Vertical
-    {
-        "key": "ctrl+q -",
+        "key": "ctrl+s h",
         "command": "workbench.action.splitEditorOrthogonal",
         "when": "editorFocus"
-    },
+    }, 
     {
-        "key": "cmd+k cmd+\\",
-        "command": "-workbench.action.splitEditorOrthogonal"
-    }, // Split Horizon
+        "key": "ctrl+s ctrl+h",
+        "command": "workbench.action.splitEditorOrthogonal",
+        "when": "editorFocus"
+    }, 
+    // Pane size
     {
         "key": "ctrl+q shift+l",
         "command": "workbench.action.increaseViewWidth",
@@ -47,7 +72,7 @@
         "key": "ctrl+q shift+h",
         "command": "workbench.action.decreaseViewWidth",
         "when": "editorFocus"
-    }, // group width increase or decrease
+    },
     {
         "key": "ctrl+q shift+k",
         "command": "workbench.action.increaseViewHeight",
@@ -57,7 +82,7 @@
         "key": "ctrl+q shift+j",
         "command": "workbench.action.decreaseViewHeight",
         "when": "editorFocus"
-    }, // group height increase or decrease
+    },
     {
         "key": "ctrl+q x",
         "command": "workbench.action.closeActiveEditor",
@@ -67,17 +92,15 @@
         "key": "ctrl+q shift+x",
         "command": "workbench.action.closeEditorsAndGroup",
         "when": "editorFocus"
-    }, // delete Editor
+    }, // Delete editor
     {
         "key": "ctrl+q shift+[",
         "command": "workbench.action.moveEditorToPreviousGroup",
-        "when": "editorFocus"
     },
     {
         "key": "ctrl+q shift+]",
         "command": "workbench.action.moveEditorToNextGroup",
-        "when": "editorFocus"
-    }, // current editor to (next|previous) group
+    }, // Current editor to (next|previous) group
     {
         "key": "ctrl+q n",
         "command": "workbench.action.focusNextGroup",
@@ -87,7 +110,7 @@
         "key": "ctrl+q p",
         "command": "workbench.action.focusPreviousGroup",
         "when": "editorFocus"
-    }, // current editor to (next|previous) group
+    }, // Current editor to (next|previous) group
     {
         "key": "ctrl+q [",
         "command": "workbench.action.terminal.searchWorkspace",
@@ -101,14 +124,34 @@
         "key": "ctrl+q [",
         "command": "workbench.view.search",
         "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
-    }, // global serach
+    }, // Global serach
     {
         "key": "ctrl+q z",
         "command": "workbench.action.maximizeEditor",
         "when": "editorFocus"
     }, // maximizeEditor
     
-    // ------------------------------ Tmux terminal ------------------------------
+    // ------------------------------ Terminal ------------------------------
+    {
+        "key": "ctrl+q n",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    },
     // ------------------------------ Filer ------------------------------
     {
         "key": "ctrl+s f",
@@ -131,14 +174,111 @@
         "when": "filesExplorerFocus"
     },
     // ------------------------------ Vim ------------------------------
+    // ------------------------------ To deal with folding expansion ------------------------------
+
     {
-        "key": "ctrl+l",
-        "command": "workbench.action.nextEditor",
-        "when": "!terminalFocus && !sideBarFocus && vim.mode != 'Insert'"
+        "command": "cursorDown",
+        "key": "j",
+        "when": "editorTextFocus && neovim.mode == normal"
     },
     {
-        "key": "ctrl+h",
-        "command": "workbench.action.previousEditor",
-        "when": "!terminalFocus && !sideBarFocus && vim.mode != 'Insert'"
+        "command": "cursorUp",
+        "key": "k",
+        "when": "editorTextFocus && neovim.mode == normal"
     },
+    {
+        "command": "cursorDown",
+        "key": "down",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "cursorUp",
+        "key": "up",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.toggleFold",
+        "key": "z a",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.unfoldAll",
+        "key": "z shift+r",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldAll",
+        "key": "z shift+m",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.unfold",
+        "key": "z o",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.unfoldRecursively",
+        "key": "z shift+o",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.fold",
+        "key": "z c",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldRecursively",
+        "key": "z shift+c",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel1",
+        "key": "z 1",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel2",
+        "key": "z 2",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel3",
+        "key": "z 3",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel4",
+        "key": "z 4",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel5",
+        "key": "z 5",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel6",
+        "key": "z 6",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldLevel7",
+        "key": "z 7",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.foldAllExcept",
+        "key": "z shift+v",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.gotoNextFold",
+        "key": "z j",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "command": "editor.gotoPreviousFold",
+        "key": "z k",
+        "when": "editorTextFocus && neovim.mode == normal"
+    }
 ]
