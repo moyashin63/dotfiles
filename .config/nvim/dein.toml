@@ -5,11 +5,25 @@ repo = 'itchyny/lightline.vim'
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-on_i = 1
-merged = '0'
-hook_source = 'call coil398#init#coc#hook_source()'
+repo = 'overcache/NeoSolarized'
 
 [[plugins]]
-repo = 'overcache/NeoSolarized'
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+# coc
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 0
+rev = 'release'
+hook_add = '''
+source ~/.config/nvim/plugins/coc.vim
+'''

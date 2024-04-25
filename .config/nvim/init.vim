@@ -1,4 +1,5 @@
-"--------------------dein--------------------
+set modifiable
+" dein
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -13,6 +14,8 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   " call dein#add(...) 
+	call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
+	
   call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
   call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
   call dein#end()
@@ -21,9 +24,6 @@ endif
 if dein#check_install()
 	call dein#intall()
 endif
-
-" Colorscheme
-colorscheme NeoSolarized
 
 " Required:
 filetype plugin indent on
@@ -34,14 +34,17 @@ if dein#check_install()
   call dein#install()
 endif
 
+" Colorscheme
+colorscheme NeoSolarized
+
 " 
 set pyxversion=3
 
 
-"--------------------lightline--------------------
+" --------------------lightline--------------------
 let g:lightline = {
+	  \ 'colorscheme': 'PaperColor',
       \ 'component_function': {
-	  \ 'colorscheme': 'solarized',
       \   'filename': 'LightLineFileNameWithParentDir'
       \ }
       \ }
@@ -61,17 +64,13 @@ function! LightLineFileNameWithParentDir()
 endfunction
 
 
-"--------------------keybind変更--------------------
-" jjとkkでnormalモードに移行
-inoremap <silent> jj <ESC>
-inoremap <silent> kk <ESC>
-
+" --------------------keybind変更--------------------
 " xとsで消した文字がクリップボードに入るのを無効化
 nnoremap x "_x
 nnoremap s "_s
 
 
-"--------------------画面表示--------------------
+" --------------------画面表示--------------------
 " 行番号の表示
 set number
 
@@ -119,4 +118,21 @@ augroup END
 
 " Edit before generated end tag
 autocmd Filetype html inoremap <buffer> </ </<C-x><C-o><ESC>F<i
+
+"" NERD
+"let g:airline#extensions#tabline#enabled = 1
+"" the amount of space to use after the glyph character (default ' ')
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+"" The amount of space to use after the glyph character in vim-airline tabline(default '')
+"let g:WebDevIconsTabAirLineAfterGlyphPadding = ' '
+
+
+" 折りたたみ状態自動保存・自動復帰
+" autocmd BufWinLeave * mkview
+" autocmd BufWinEnter * silent loadview
+" これをやってから新規作成ファイルを開くたびにエラー出るので一旦コメントアウト
+
+" 折りたたみをインデント単位に
+" :set foldmethod=indent
+"
 

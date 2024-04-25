@@ -1,6 +1,6 @@
 # Created by newuser for 5.8
-#
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 source ~/enhancd/init.sh
 
 #export PS1="%~ %n "
@@ -10,10 +10,7 @@ bindkey -v
 
 #alias
 alias la='ls -la'
-
-# jj,kkでインサートから抜ける
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M viins 'kk' vi-cmd-mode
+alias pwd='pwd && pwd | pbcopy'
 
 # vimでデフォルトでnvimを立ち上げる
 alias vim='nvim'
@@ -41,6 +38,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 # version
 eval "$(anyenv init -)"
+
+# atcoder
+atg() {
+	local contest="$1"
+	cd ~/dev/atCoder/
+	atcoder-tools gen "$contest" --workspace ~/dev/atCoder/ --template ~/dev/atCoder/template.cpp
+	cp -rf ~/dev/atCoder/cpp/.vscode/ ~/dev/atCoder/$contest/.vscode/
+	cd ./"$contest"
+	code -r .
+}
+att() {
+	g++ ./main.cpp
+	atcoder-tools test --exec ./a.out
+}
+ats() {
+	atcoder-tools submit --exec ./a.out -u
+}
+
+ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

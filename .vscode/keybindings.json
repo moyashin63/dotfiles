@@ -1,11 +1,9 @@
 [
-    // ------------------------------ Basic ------------------------------
+    // ------------------------------ Basic ------------------------------ 
     {
         "key": "ctrl+`",
         "command": "workbench.action.terminal.focus"
-    },
-    {
-        "key": "ctrl+`",
+    }, { "key": "ctrl+`",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
@@ -154,28 +152,22 @@
     },
     // ------------------------------ Filer ------------------------------
     {
-        "key": "ctrl+s f",
+        "key": "ctrl+s",
         "command": "workbench.explorer.fileView.focus",
         "when": "!filesExplorerFocus"
     },
     {
-        "key": "ctrl+s ctrl+f",
+        "key": "ctrl+s ctrl+s",
         "command": "workbench.explorer.fileView.focus",
-        "when": "!filesExplorerFocus"
+        "when": "terminalFocus"
     },
     {
-        "key": "ctrl+s f",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "filesExplorerFocus"
-    },
-    {
-        "key": "ctrl+s ctrl+f",
+        "key": "ctrl+s",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "filesExplorerFocus"
     },
     // ------------------------------ Vim ------------------------------
     // ------------------------------ To deal with folding expansion ------------------------------
-
     {
         "command": "cursorDown",
         "key": "j",
